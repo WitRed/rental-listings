@@ -17,9 +17,15 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean("is_email_visible")->default(false);
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string("office_phone")->nullable();
+            $table->boolean("is_office_phone_visible")->default(false);
+            $table->string("gsm_number")->nullable();
+            $table->boolean("is_gsm_number_visible")->default(false);
             $table->rememberToken();
+            $table->boolean("is_admin")->default(false);
             $table->timestamps();
         });
     }
