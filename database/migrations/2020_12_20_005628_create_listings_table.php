@@ -19,6 +19,9 @@ class CreateListingsTable extends Migration
             $table->string("title");
             $table->float("price");
             $table->foreignIdFor(\App\Models\Category::class);
+            $table->foreignIdFor(\Epigra\TrGeoZones\Models\Country::class, "country_id");
+            $table->foreignIdFor(\Epigra\TrGeoZones\Models\City::class, "city_id");
+            $table->foreignIdFor(\Epigra\TrGeoZones\Models\CityDistrict::class, "district_id");
             $table->string("type")->nullable()->index();
             $table->integer("gross_area")->nullable();
             $table->integer("net_area")->nullable();
