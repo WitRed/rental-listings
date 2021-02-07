@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Listing;
+use Epigra\TrGeoZones\Models\City;
 use Illuminate\Http\Request;
+use Epigra\TrGeoZones\Models\Country;
 
 class ListingController extends Controller
 {
@@ -24,7 +27,10 @@ class ListingController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $countries = Country::all();
+        $cities = City::all();
+        return view('listings.new', compact('categories', 'countries', 'cities'));
     }
 
     /**
