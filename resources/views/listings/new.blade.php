@@ -14,14 +14,15 @@
                 <div class="card-header">Yeni Kiralık İlanı Ekle</div>
 
                 <div class="card-body">
-                    <form method="post" action="">
+                    <form method="post" action="{{ route('listings.store') }}">
+                        @csrf
                         <div class="form-group">
                             <label for="inpTitle">İlan Başlığı</label>
-                            <input name="title" type="text" class="form-control" id="inpTitle" placeholder="Merkezi Konumda Kelepir" required>
+                            <input required name="title" type="text" class="form-control" id="inpTitle" placeholder="Merkezi Konumda Kelepir">
                         </div>
                         <div class="form-group">
                             <label for="inpPrice">Aylık Kira Tutarı (TL)</label>
-                            <input name="price" type="text" class="form-control" id="inpPrice" placeholder="750">
+                            <input required name="price" type="text" class="form-control" id="inpPrice" placeholder="750">
                         </div>
                         <div class="form-group">
                             <label for="inpdues">Aidat (TL)</label>
@@ -33,17 +34,17 @@
                         </div>
                         <div class="form-group">
                             <label for="slcCategory">Kategori</label>
-                            <select name=category class="form-control" id="slcCategory">
+                            <select required name="category" class="form-control" id="slcCategory">
                                 @foreach($categories as $category)
-                                <option>{{$category->name}}</option>
+                                <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="slcCity">Şehir</label>
-                            <select name=city class="form-control" id="slcCity">
+                            <select required name="city_id" class="form-control" id="slcCity">
                                 @foreach($cities as $city)
-                                <option>{{$city->name}}</option>
+                                <option value="{{$city->id}}">{{$city->name}}</option>
                                 @endforeach
                             </select>
                         </div>

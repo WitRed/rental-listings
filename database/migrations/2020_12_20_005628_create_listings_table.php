@@ -39,7 +39,7 @@ class CreateListingsTable extends Migration
             $table->float("deposit")->nullable();
             $table->string("from_who")->nullable()->index();
             $table->longText("description")->nullable();
-            $table->boolean("is_approved")->nullable();
+            $table->boolean("is_approved")->nullable()->default(null);
             $table->date("approved_at")->nullable();
             $table->foreignIdFor(\App\Models\User::class, "approved_by")->nullable();
             $table->string("control_message")->nullable();

@@ -41,7 +41,14 @@ class ListingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $listing = new Listing($request->all());
+        $listing->category_id = 1;
+        $listing->country_id = 1;
+        $listing->district_id = 1;
+        $listing->user_id = $request->user()->id;
+        $listing->save();
+        $request->session()->flash('status', 'İlanınız eklendi, onaylandıktan sonra yayınlanacaktır!');
+        return redirect()->route('home');
     }
 
     /**

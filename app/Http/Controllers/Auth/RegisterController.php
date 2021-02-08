@@ -52,7 +52,12 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'is_email_visible' => ['nullable', 'boolean'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'office_phone' => ['string', 'max:15'],
+            'is_office_phone_visible' => ['nullable', 'boolean'],
+            'gsm_number'  => ['string', 'max:15'],
+            'is_gsm_number_visible' => ['nullable', 'boolean'],
         ]);
     }
 
@@ -68,6 +73,11 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'is_email_visible' => $data['is_email_visible'],
+            'office_phone' => $data['office_phone'],
+            'is_office_phone_visible' => $data['is_office_phone_visible'],
+            'gsm_number' => $data['gsm_number'],
+            'is_gsm_number_visible' => $data['is_gsm_number_visible'],
         ]);
     }
 }
